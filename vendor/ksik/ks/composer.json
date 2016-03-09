@@ -1,0 +1,23 @@
+{
+  "name": "ksik/ks",
+  "description": "utilities + zend framework extensions",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "ks",
+      "email": "ks@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2"
+  },
+  "autoload": {
+    "psr-0": {
+      "Ks_": "src/"
+    }
+  },
+  "include-path": [
+    "src/"
+  ]
+}

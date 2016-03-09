@@ -4,6 +4,13 @@
 class IndexController extends Zend_Controller_Action
 {
 
+    public function preDispatch()
+    {
+        if (!Zend_Auth::getInstance()->hasIdentity()) {
+            $this->redirect('/auth/auth/login');
+        }
+    }
+
     public function init()
     {
         /* Initialize action controller here */
@@ -19,6 +26,7 @@ class IndexController extends Zend_Controller_Action
         $autors = ProductQuery::create()
             ->find();
         $this->view->assign('autors', $autors);
+
     }
 
 
