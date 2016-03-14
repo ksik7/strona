@@ -8,7 +8,7 @@ class Test_ProductController extends Zend_Controller_Action
     }
     public function indexAction()
     {
-        $products = ProductsQuery::create()->find();
+        $products = ProductQuery::create()->find();
         $this->view->assign('products',$products);
     }
     public function addAction()

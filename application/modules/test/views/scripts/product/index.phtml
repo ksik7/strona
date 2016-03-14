@@ -1,8 +1,10 @@
 <ul>
-    <? /** @var Products $product */
+    <?php
+    /**
+     * @var Product  $product
+     */
     foreach ($this->products as $product) {
-        ?>
-        <li><?= $product->getName(); ?></li>
-    <? } ?>
-
+        echo '<li>'. $product->getName() .'</li>';
+    }
+    ?>
 </ul>

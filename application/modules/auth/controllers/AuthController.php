@@ -27,13 +27,14 @@ class Auth_AuthController extends Zend_Controller_Action
 
                 $adapter = new Ks_Auth_Adapter_Db($form->getValue('username'), $form->getValue('password'), 'Users');
                 $auth = Zend_Auth::getInstance();
-
-                $result = $adapter->authenticate();
+                $result = $auth->authenticate($adapter);
 
                 if ($result->isValid()) {
                     echo 'valid';
                     $authStorage = $auth->getStorage();
-                    $authStorage->write($adapter->user->getId());
+
+                    $user = $adapter->user;
+                    $authStorage->write($adapter);
 
                     $this->redirect('/');
                 } else {

@@ -20,6 +20,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->registerNamespace('Ks_');
+
+        $acl = new Ks_LibraryAcl_LibraryAcl();
+        $auth  = Zend_Auth::getInstance();
+
+        $fc =  Zend_Controller_Front::getInstance();
+        $fc->registerPlugin(new Ks_Plugin_AccessCheck($acl, $auth));
     }
 
 }

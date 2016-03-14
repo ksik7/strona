@@ -50,9 +50,16 @@ class Ks_Auth_Adapter_Db implements Zend_Auth_Adapter_Interface{
                 $result = $this->result(Zend_Auth_Result::FAILURE);
             }
 
-        return $result;
+        return $this->result($result);
     }
 
+    /**
+     * Factory for Zend_Auth_Result
+     *
+     * @param integer $code   The Result code, see Zend_Auth_Result
+     * @param mixed $messages     The Message, can be a string or array
+     * @return Zend_Auth_Result
+     */
     private function result($code, $messages = array())
     {
         if (!is_array($messages)) {
