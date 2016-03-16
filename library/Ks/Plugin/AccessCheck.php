@@ -18,8 +18,8 @@ class Ks_Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract
      * @var Users $user
      */
 
-    public function preDispatch(Zend_Controller_Request_Abstract $request)
-    {/*
+    public function preDispatch(Zend_Controller_Request_Abstract $request) {
+
         $module = $request->getModuleName();
         $controller = $request->getControllerName();
         $action = $request->getActionName();
@@ -27,15 +27,20 @@ class Ks_Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract
 
         $identity = $this->_auth->getStorage()->read();
 
-        if(!$user = $identity->user){
-            $role = '';
+        if(!$identity){
+            $role = null;
         }
         else{
+            $user = $identity->user;
             $role = $user->getRole();
         }
-        if (!$this->_acl->isAllowed($role, $resource, $action)) {
-            $request->setModuleName('default');
-       }*/
-    }
 
+        if($this->_acl->has($resource)) {
+            if (!$this->_acl->isAllowed($role, $resource, $action)) {
+                $request->setModuleName('auth')
+                    ->setControllerName('auth')
+                    ->setActionName('login');
+            }
+        }
+    }
 }

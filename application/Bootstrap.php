@@ -28,4 +28,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $fc->registerPlugin(new Ks_Plugin_AccessCheck($acl, $auth));
     }
 
+    protected function _initViewHelpers(){
+        $this->bootstrap('layout');
+        $layout = $this->getResource('layout');
+        $view = $layout->getView();
+
+
+        $view->doctype('HTML5');
+        $navContainerConfig = new Zend_Config_Xml(APPLICATION_PATH . '/configs/navigation.xml', 'nav');
+        $navContainer = new Zend_Navigation($navContainerConfig);
+
+        $view->navigation($navContainer);
+    }
+
 }

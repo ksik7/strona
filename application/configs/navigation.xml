@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <nav>
+        <logout>
+            <label>Logout</label>
+            <module>auth</module>
+            <controller>auth</controller>
+            <action>logout</action>
+        </logout>
+
+        <login>
+            <label>Login</label>
+            <module>auth</module>
+            <controller>auth</controller>
+            <action>login</action>
+        </login>
+
+        <default>
+            <class>dropdown-toggle</class>
+            <label>Default</label>
+            <uri>#</uri>
+            <pages>
+                <list>
+                    <label>Lista</label>
+                    <module>default</module>
+                    <controller>index</controller>
+                    <action>list</action>
+                </list>
+                <index>
+                    <label>Index</label>
+                    <module>default</module>
+                    <controller>index</controller>
+                    <action>index</action>
+                </index>
+            </pages>
+        </default>
+
+        <test>
+            <label>Test</label>
+            <module>test</module>
+            <controller>product</controller>
+            <action>index</action>
+        </test>
+
+    </nav>
+</config>
