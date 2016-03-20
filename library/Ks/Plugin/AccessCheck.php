@@ -5,17 +5,15 @@ class Ks_Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract
 {
 
     private $_acl = null;
-    private $_auth = null;
 
-    public function __construct(Zend_Acl $acl, Zend_Auth $auth)
+    public function __construct(Zend_Acl $acl)
     {
         $this->_acl = $acl;
-        $this->_auth = $auth;
     }
 
     /**
      * @param Zend_Controller_Request_Abstract $request
-     * @var Users $user
+     *
      */
 
     public function preDispatch(Zend_Controller_Request_Abstract $request) {
@@ -25,18 +23,9 @@ class Ks_Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract
         $action = $request->getActionName();
         $resource = "{$module}-{$controller}";
 
-        $identity = $this->_auth->getStorage()->read();
-
-        if(!$identity){
-            $role = null;
-        }
-        else{
-            $user = $identity->user;
-            $role = $user->getRole();
-        }
 
         if($this->_acl->has($resource)) {
-            if (!$this->_acl->isAllowed($role, $resource, $action)) {
+            if (!$this->_acl->isAllowed(Zend_Registry::get('role'), $resource, $action)) {
                 $request->setModuleName('auth')
                     ->setControllerName('auth')
                     ->setActionName('login');

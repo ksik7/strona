@@ -1,10 +1,21 @@
 <ul>
     <?php
     /**
-     * @var Product  $product
+     * @var Product $product
      */
+    /*
     foreach ($this->products as $product) {
         echo '<li>'. $product->getName() .'</li>';
+    }*/
+    foreach ($this->paginator as $product) {
+        echo '<li>' . $product->getName() . '</li>';
     }
+
     ?>
 </ul>
+
+<?php
+
+echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml');
+?>
+<a href="<?php echo $this->url(array('page' => 1)) ?>" id="link">test</a>

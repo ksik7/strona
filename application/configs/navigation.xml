@@ -6,6 +6,8 @@
             <module>auth</module>
             <controller>auth</controller>
             <action>logout</action>
+            <resource>auth-auth</resource>
+            <privilege>logout</privilege>
         </logout>
 
         <login>
@@ -13,12 +15,15 @@
             <module>auth</module>
             <controller>auth</controller>
             <action>login</action>
+            <resource>auth-auth</resource>
+            <privilege>login</privilege>
         </login>
 
         <default>
-            <class>dropdown-toggle</class>
             <label>Default</label>
-            <uri>#</uri>
+            <module>default</module>
+            <resource>default-index</resource>
+            <privilege>index</privilege>
             <pages>
                 <list>
                     <label>Lista</label>
@@ -40,7 +45,8 @@
             <module>test</module>
             <controller>product</controller>
             <action>index</action>
+            <resource>test-product</resource>
+            <privilege>index</privilege>
         </test>
-
     </nav>
 </config>
