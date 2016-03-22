@@ -11,16 +11,18 @@ class Test_ProductController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $products = ProductQuery::create()->find()->getData();
+        $products = ProductQuery::create()->find()->toArray();
 
         $paginator = Zend_Paginator::factory($products);
         $paginator->setItemCountPerPage(2)
-            ->setCurrentPageNumber($this->_getParam('page', 2));
+            ->setCurrentPageNumber($this->_getParam('page', 1));
 
-        $productsJson = $paginator->toJson();
-        $this->view->products = $productsJson;
+        $test = $paginator->toJson();
+        $this->view->products = $paginator->toJson();
         if(!$this->_request->isXmlHttpRequest()){
             $this->view->paginator = $paginator;
+        }else{
+            $this->view->assign('currentPage', $paginator->getCurrentPageNumber());
         }
     }
 

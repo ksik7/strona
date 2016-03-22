@@ -6,8 +6,7 @@
     <?php
 
      $this->headLink()->appendStylesheet($this->baseUrl(). '/css/bootstrap.css');
-     $this->headScript()->appendFile($this->baseUrl().'/js/jquery/jquery-1.12.2.min.js');
-     $this->headScript()->appendFile($this->baseUrl().'/js/frontend.js', 'text/javascript');
+     $this->headScript()->prependFile($this->baseUrl().'/js/jquery/jquery-1.12.2.min.js');
 
     echo $this->headLink();
     echo $this->headScript();

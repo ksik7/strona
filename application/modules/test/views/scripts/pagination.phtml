@@ -1,6 +1,10 @@
+
+<a href="#" id="previous" page="<?= $this->previous; ?>"> Previous</a>
 <?php
 
 foreach($this->pagesInRange as $page){
     $test = $this->url(array('page' => $page));
-    echo '<a href="'. $this->url(array('page' => $page)). '">'. $page .'</a>';
+    echo '<a href="#" id="page" page="'. $page .'">'. $page . '</a>' .' ';
 }
+?>
+<a href="#" id="next" page="<?= $this->next; ?>"> Next</a>

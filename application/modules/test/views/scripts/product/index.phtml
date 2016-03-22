@@ -1,4 +1,7 @@
-<ul>
+<?php
+echo $this->headScript()->appendFile($this->baseUrl().'/js/frontend.js', 'text/javascript');
+?>
+<ul id="test">
     <?php
     /**
      * @var Product $product
@@ -8,7 +11,7 @@
         echo '<li>'. $product->getName() .'</li>';
     }*/
     foreach ($this->paginator as $product) {
-        echo '<li>' . $product->getName() . '</li>';
+        echo '<li>' . $product['Name'] . '</li>';
     }
 
     ?>
@@ -18,4 +21,5 @@
 
 echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml');
 ?>
-<a href="<?php echo $this->url(array('page' => 1)) ?>" id="link">test</a>
+
+<div>asdasdasdasdasdasdasdasdadsasdasdasda sdas das da sdas das dasd</div>
